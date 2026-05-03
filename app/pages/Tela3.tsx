@@ -111,14 +111,14 @@ export function Tela3() {
       <form
         onSubmit={handleSubmit}
         className="absolute inset-0 flex flex-col items-center pb-8 totem:pb-12"
-        style={{ paddingTop: '26vh', paddingBottom: isTotem ? '390px' : '0' }}
+        style={{ paddingTop: isTotem ? '20vh' : '26vh', paddingBottom: isTotem ? '390px' : '0' }}
       >
         {/* Wrapper centralizado com largura máxima */}
         <div className="w-full flex flex-col flex-1 overflow-hidden px-6" style={{ maxWidth: '860px' }}>
         {/* Área rolável */}
         <div className="flex-1 overflow-y-auto flex flex-col gap-4 totem:gap-5 pb-4">
 
-          <p className="text-white font-normal leading-snug mb-1 text-[1.2rem] totem:text-[clamp(2rem,5vh,3.6rem)]">
+          <p className="text-white font-normal leading-snug mb-1 text-[1.2rem] totem:text-[clamp(2rem,5vh,3.3rem)]">
             Agora, preencha o formulário:
           </p>
 
@@ -131,7 +131,7 @@ export function Tela3() {
               value={nome}
               onChange={e => setNome(e.target.value)}
               onFocus={() => nomeRef.current && openKeyboard(nomeRef.current, 'text')}
-              inputMode="none"
+              inputMode={isTotem ? 'none' : 'text'}
               style={fieldStyle}
             />
           </div>
@@ -145,7 +145,7 @@ export function Tela3() {
               value={empresa}
               onChange={e => setEmpresa(e.target.value)}
               onFocus={() => empresaRef.current && openKeyboard(empresaRef.current, 'text')}
-              inputMode="none"
+              inputMode={isTotem ? 'none' : 'text'}
               style={fieldStyle}
             />
           </div>
@@ -162,7 +162,7 @@ export function Tela3() {
                 onChange={e => setWhatsapp(maskWhatsapp(e.target.value))}
                 onFocus={() => whatsappRef.current && openKeyboard(whatsappRef.current, 'numeric')}
                 placeholder="(00) 00000-0000"
-                inputMode="none"
+                inputMode={isTotem ? 'none' : 'numeric'}
                 style={fieldStyle}
               />
             </div>
@@ -194,7 +194,8 @@ export function Tela3() {
                   onChange={v => setCidade(v)}
                   options={cidades.map(c => c.cidade)}
                   disabled={!estado}
-                  onInputFocus={el => openKeyboard(el, 'text')}
+                  onInputFocus={isTotem ? el => openKeyboard(el, 'text') : undefined}
+                  inputMode={isTotem ? 'none' : 'text'}
                 />
               )}
             </div>
@@ -237,7 +238,7 @@ export function Tela3() {
                 value={segmento}
                 onChange={e => setSegmento(e.target.value)}
                 onFocus={() => segmentoRef.current && openKeyboard(segmentoRef.current, 'text')}
-                inputMode="none"
+                inputMode={isTotem ? 'none' : 'text'}
                 style={fieldStyle}
               />
             </div>

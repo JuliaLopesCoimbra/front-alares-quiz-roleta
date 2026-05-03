@@ -10,6 +10,7 @@ interface AutocompleteFieldProps {
   disabled?: boolean
   required?: boolean
   onInputFocus?: (el: HTMLInputElement) => void
+  inputMode?: React.HTMLAttributes<HTMLInputElement>['inputMode']
 }
 
 function normalize(str: string) {
@@ -24,6 +25,7 @@ export function AutocompleteField({
   disabled = false,
   required = false,
   onInputFocus,
+  inputMode = 'none',
 }: AutocompleteFieldProps) {
   const [query, setQuery] = useState(value)
   const [open, setOpen] = useState(false)
@@ -72,7 +74,7 @@ export function AutocompleteField({
         disabled={disabled}
         placeholder={disabled ? '' : placeholder}
         autoComplete="off"
-        inputMode="none"
+        inputMode={inputMode}
         style={{
           width: '100%',
           height: fieldHeight,

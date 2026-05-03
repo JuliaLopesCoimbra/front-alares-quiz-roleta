@@ -1051,6 +1051,10 @@ body {
     max-width: 520px;
   }
 
+  .totem\:gap-10 {
+    gap: 2.5rem;
+  }
+
   .totem\:gap-12 {
     gap: 3rem;
   }
@@ -1103,6 +1107,14 @@ body {
 
   .totem\:text-\[clamp\(3rem\2c 7vh\2c 6rem\)\] {
     font-size: clamp(3rem, 7vh, 6rem);
+  }
+
+  .totem\:text-\[clamp\(2rem\2c 5vh\2c 2\.6rem\)\] {
+    font-size: clamp(2rem, 5vh, 2.6rem);
+  }
+
+  .totem\:text-\[clamp\(2rem\2c 5vh\2c 3\.3rem\)\] {
+    font-size: clamp(2rem, 5vh, 3.3rem);
   }
 }
 

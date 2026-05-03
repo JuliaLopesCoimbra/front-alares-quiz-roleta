@@ -67,7 +67,7 @@ export function Tela4() {
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 totem:gap-12">
 
         {/* Texto acima da roleta */}
-        <div className="text-center leading-snug" style={{ marginTop: '4vh' }}>
+        <div className="text-center flex flex-col totem:gap-10" style={{ marginTop: '4vh' }}>
           <p className="font-bold text-xl totem:text-[clamp(2.2rem,5vh,4.2rem)]" style={{ color: 'white' }}>
             É o seu momento!
           </p>
