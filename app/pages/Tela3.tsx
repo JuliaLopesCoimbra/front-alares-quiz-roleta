@@ -41,6 +41,14 @@ export function Tela3() {
   const { tipoLead, setLeadId, setCidadeAtendida, setTelaAtual } = useApp()
   const { openKeyboard } = useKeyboard()
 
+  const [isTotem, setIsTotem] = useState(false)
+  useEffect(() => {
+    const check = () => setIsTotem(window.innerWidth >= 1080)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
+
   const nomeRef = useRef<HTMLInputElement>(null)
   const empresaRef = useRef<HTMLInputElement>(null)
   const whatsappRef = useRef<HTMLInputElement>(null)
@@ -98,19 +106,19 @@ export function Tela3() {
 
   return (
     <>
-    <VirtualKeyboard />
+    {isTotem && <VirtualKeyboard />}
     <ScreenBackground src="/backgrounds/tela3.png">
       <form
         onSubmit={handleSubmit}
         className="absolute inset-0 flex flex-col items-center pb-8 totem:pb-12"
-        style={{ paddingTop: '26vh', paddingBottom: '390px' }}
+        style={{ paddingTop: '26vh', paddingBottom: isTotem ? '390px' : '0' }}
       >
         {/* Wrapper centralizado com largura máxima */}
         <div className="w-full flex flex-col flex-1 overflow-hidden px-6" style={{ maxWidth: '860px' }}>
         {/* Área rolável */}
         <div className="flex-1 overflow-y-auto flex flex-col gap-4 totem:gap-5 pb-4">
 
-          <p className="text-white font-normal leading-snug mb-1" style={{ fontSize: 'clamp(2rem, 5vh, 3.6rem)' }}>
+          <p className="text-white font-normal leading-snug mb-1 text-[1.2rem] totem:text-[clamp(2rem,5vh,3.6rem)]">
             Agora, preencha o formulário:
           </p>
 

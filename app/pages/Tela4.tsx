@@ -64,12 +64,16 @@ export function Tela4() {
 
   return (
     <ScreenBackground src="/backgrounds/tela4.png">
-      <div className="absolute inset-0 flex flex-col items-center justify-center gap-12">
+      <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 totem:gap-12">
 
         {/* Texto acima da roleta */}
-        <div className="text-center leading-snug" style={{ marginTop: '10vh' }}>
-          <p style={{ fontSize: 'clamp(2.2rem, 5vh, 4.2rem)', fontWeight: 700, color: 'white' }}>É o seu momento!</p>
-          <p style={{ fontSize: 'clamp(2.2rem, 5vh, 4.2rem)', fontWeight: 500, color: '#00f6a5' }}>Gire a roleta e ganhe:</p>
+        <div className="text-center leading-snug" style={{ marginTop: '4vh' }}>
+          <p className="font-bold text-xl totem:text-[clamp(2.2rem,5vh,4.2rem)]" style={{ color: 'white' }}>
+            É o seu momento!
+          </p>
+          <p className="font-medium text-xl totem:text-[clamp(2.2rem,5vh,4.2rem)]" style={{ color: '#00f6a5' }}>
+            Gire a roleta e ganhe:
+          </p>
         </div>
 
         {/* Wrapper roleta + ponteiro */}
@@ -81,8 +85,8 @@ export function Tela4() {
             alt="Roleta"
             draggable={false}
             style={{
-              width: 'clamp(500px, 75vw, 820px)',
-              height: 'clamp(500px, 75vw, 820px)',
+              width: 'clamp(260px, 80vw, 820px)',
+              height: 'clamp(260px, 80vw, 820px)',
               display: 'block',
               transform: `rotate(${rotation}deg)`,
               transition,
@@ -100,7 +104,7 @@ export function Tela4() {
               top: -30,
               left: '50%',
               transform: 'translateX(-50%)',
-              width: 'clamp(60px, 8vw, 100px)',
+              width: 'clamp(30px, 8vw, 100px)',
               zIndex: 10,
               pointerEvents: 'none',
               userSelect: 'none',
@@ -121,8 +125,8 @@ export function Tela4() {
               color: '#042d1e',
               border: 'none',
               borderRadius: '20px',
-              padding: 'clamp(18px, 3vh, 40px) clamp(50px, 10vw, 130px)',
-              fontSize: 'clamp(1.5rem, 3.5vh, 3rem)',
+              padding: 'clamp(10px, 2.5vh, 40px) clamp(24px, 8vw, 130px)',
+              fontSize: 'clamp(0.95rem, 3vh, 3rem)',
               letterSpacing: '0.04em',
             }}
           >

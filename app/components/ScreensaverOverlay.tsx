@@ -4,7 +4,7 @@ import { useState, useCallback } from 'react'
 import { useIdleTimer } from '../hooks/useIdleTimer'
 import { Screensaver } from './Screensaver'
 
-const IDLE_TIMEOUT_MS = 30_000
+const IDLE_TIMEOUT_MS = 60_000
 
 export function ScreensaverOverlay() {
   const [showScreensaver, setShowScreensaver] = useState(false)

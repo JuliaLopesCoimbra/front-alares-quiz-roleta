@@ -24,17 +24,17 @@ export function Tela5() {
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 pb-12">
 
         <div className="text-center leading-snug">
-          <p style={{ fontSize: 'clamp(3rem, 7vh, 6rem)', fontWeight: 700, color: 'white' }}>
+          <p className="font-bold text-lg totem:text-[clamp(3rem,7vh,6rem)]" style={{ color: 'white' }}>
             Parabéns!
           </p>
-          <p style={{ fontSize: 'clamp(3rem, 7vh, 6rem)', fontWeight: 700, color: '#00f6a5' }}>
+          <p className="font-bold text-lg totem:text-[clamp(3rem,7vh,6rem)]" style={{ color: '#00f6a5' }}>
             Você ganhou:
           </p>
         </div>
 
         {icon && (
-          <div className="flex flex-col items-center gap-4">
-            <p style={{ fontSize: 'clamp(1.8rem, 4vh, 3.4rem)', fontWeight: 700, color: 'white', textAlign: 'center' }}>
+          <div className="flex flex-col items-center gap-2">
+            <p className="font-bold text-sm totem:text-[clamp(1.8rem,4vh,3.4rem)]" style={{ color: 'white', textAlign: 'center' }}>
               {brindeGanho}
             </p>
             <img
@@ -42,8 +42,8 @@ export function Tela5() {
               alt={brindeGanho ?? ''}
               draggable={false}
               style={{
-                width: 'clamp(180px, 30vw, 380px)',
-                height: 'clamp(180px, 30vw, 380px)',
+                width: 'clamp(80px, 28vw, 380px)',
+                height: 'clamp(80px, 28vw, 380px)',
                 objectFit: 'contain',
               }}
             />
@@ -52,14 +52,13 @@ export function Tela5() {
 
         <button
           onClick={handleContinuar}
-          className="font-bold uppercase tracking-wider active:scale-95 transition-transform"
+          className="font-bold uppercase tracking-wider active:scale-95 transition-transform text-sm totem:text-[clamp(1.4rem,3vh,2.6rem)]"
           style={{
             background: '#00f6a5',
             color: '#042d1e',
             border: 'none',
-            borderRadius: '16px',
-            padding: 'clamp(16px, 2.5vh, 36px) clamp(50px, 10vw, 130px)',
-            fontSize: 'clamp(1.4rem, 3vh, 2.6rem)',
+            borderRadius: '12px',
+            padding: 'clamp(8px, 2vh, 36px) clamp(20px, 8vw, 130px)',
             letterSpacing: '0.06em',
           }}
         >
