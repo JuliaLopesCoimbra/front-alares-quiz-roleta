@@ -110,6 +110,7 @@ export function Tela3() {
     <ScreenBackground src="/backgrounds/tela3.png">
       <form
         onSubmit={handleSubmit}
+        autoComplete="off"
         className="absolute inset-0 flex flex-col items-center pb-8 totem:pb-12"
         style={{ paddingTop: isTotem ? '20vh' : '26vh', paddingBottom: isTotem ? '390px' : '0' }}
       >
@@ -132,6 +133,7 @@ export function Tela3() {
               onChange={e => setNome(e.target.value)}
               onFocus={() => nomeRef.current && openKeyboard(nomeRef.current, 'text')}
               inputMode={isTotem ? 'none' : 'text'}
+              autoComplete="new-password"
               style={fieldStyle}
             />
           </div>
@@ -146,6 +148,7 @@ export function Tela3() {
               onChange={e => setEmpresa(e.target.value)}
               onFocus={() => empresaRef.current && openKeyboard(empresaRef.current, 'text')}
               inputMode={isTotem ? 'none' : 'text'}
+              autoComplete="new-password"
               style={fieldStyle}
             />
           </div>
@@ -163,6 +166,7 @@ export function Tela3() {
                 onFocus={() => whatsappRef.current && openKeyboard(whatsappRef.current, 'numeric')}
                 placeholder="(00) 00000-0000"
                 inputMode={isTotem ? 'none' : 'numeric'}
+                autoComplete="new-password"
                 style={fieldStyle}
               />
             </div>
@@ -239,6 +243,7 @@ export function Tela3() {
                 onChange={e => setSegmento(e.target.value)}
                 onFocus={() => segmentoRef.current && openKeyboard(segmentoRef.current, 'text')}
                 inputMode={isTotem ? 'none' : 'text'}
+                autoComplete="new-password"
                 style={fieldStyle}
               />
             </div>

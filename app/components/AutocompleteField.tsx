@@ -35,8 +35,8 @@ export function AutocompleteField({
 
   const filtered = open
     ? (query.length >= 1
-        ? options.filter(o => normalize(o).includes(normalize(query))).slice(0, 80)
-        : options.slice(0, 80))
+        ? options.filter(o => normalize(o).includes(normalize(query)))
+        : options)
     : []
 
   useEffect(() => {

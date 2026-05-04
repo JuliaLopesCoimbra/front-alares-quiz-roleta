@@ -23,9 +23,11 @@ const POR_PAGINA = 20
 
 function formatDateTime(iso: string | null) {
   if (!iso) return '—'
-  return new Date(iso).toLocaleString('pt-BR', {
+  const utc = iso.endsWith('Z') || iso.includes('+') ? iso : iso + 'Z'
+  return new Date(utc).toLocaleString('pt-BR', {
     day: '2-digit', month: '2-digit', year: 'numeric',
     hour: '2-digit', minute: '2-digit',
+    timeZone: 'America/Sao_Paulo',
   })
 }
 
@@ -135,6 +137,9 @@ export default function PessoasAtendidas() {
               <span style={{ fontSize: '0.75rem', color: '#9ca3af' }}>{ultimaAtualizacao.toLocaleTimeString('pt-BR')}</span>
             )}
           </div>
+          <Link href="/pessoas-nao-atendidas" style={{ background: '#dc2626', color: 'white', border: 'none', borderRadius: 10, padding: '8px 14px', fontWeight: 600, fontSize: '0.85rem', textDecoration: 'none' }}>
+            Não Atendidas
+          </Link>
           <Link href="/cities" style={{ background: 'white', color: '#374151', border: '1px solid #e5e7eb', borderRadius: 10, padding: '8px 14px', fontWeight: 600, fontSize: '0.85rem', textDecoration: 'none' }}>
             ← Cidades
           </Link>
