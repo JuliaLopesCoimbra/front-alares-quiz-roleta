@@ -269,6 +269,8 @@ export function Tela3() {
                   border: 'none',
                   borderRadius: '16px',
                   height: 'clamp(70px, 9vh, 120px)',
+                  minHeight: 'clamp(70px, 9vh, 120px)',
+                  flexShrink: 0,
                   fontSize: 'clamp(1.2rem, 2.8vh, 2.5rem)',
                   letterSpacing: '0.06em',
                   transition: 'color 0.2s',
