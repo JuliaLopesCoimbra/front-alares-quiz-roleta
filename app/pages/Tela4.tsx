@@ -123,24 +123,24 @@ export function Tela4() {
           <p className="text-red-300 text-sm bg-black/40 rounded-lg px-6 py-2">{erro}</p>
         )}
 
-        {!girando && (
-          <button
-            onClick={handleGirar}
-            className="font-bold uppercase active:scale-95 transition-transform"
-            style={{
-              background: '#00f6a5',
-              color: '#042d1e',
-              border: 'none',
-              borderRadius: '20px',
-              padding: isTotem ? 'clamp(10px, 2.5vh, 40px) clamp(24px, 8vw, 130px)' : '16px 28px',
-              fontSize: isTotem ? 'clamp(0.95rem, 3vh, 3rem)' : '1.2rem',
-              marginTop: isTotem ? 0 : '16px',
-              letterSpacing: '0.04em',
-            }}
-          >
-            Quero tentar a sorte!
-          </button>
-        )}
+        <button
+          onClick={handleGirar}
+          disabled={girando}
+          className="font-bold uppercase active:scale-95 transition-transform"
+          style={{
+            background: '#00f6a5',
+            color: '#042d1e',
+            border: 'none',
+            borderRadius: '20px',
+            padding: isTotem ? 'clamp(10px, 2.5vh, 40px) clamp(24px, 8vw, 130px)' : '16px 28px',
+            fontSize: isTotem ? 'clamp(0.95rem, 3vh, 3rem)' : '1.2rem',
+            marginTop: isTotem ? 0 : '16px',
+            letterSpacing: '0.04em',
+            visibility: girando ? 'hidden' : 'visible',
+          }}
+        >
+          Quero tentar a sorte!
+        </button>
 
       </div>
     </ScreenBackground>

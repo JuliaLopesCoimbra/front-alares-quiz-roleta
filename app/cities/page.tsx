@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api.quiz-roulette.picbrand.com.br'
 
 const ESTADO_NOMES: Record<string, string> = {
   BA: 'Bahia', CE: 'Ceará', MG: 'Minas Gerais',
