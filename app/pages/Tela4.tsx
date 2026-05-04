@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useApp } from '../context/AppContext'
 import { ScreenBackground } from '../components/ScreenBackground'
 import { api } from '../services/api'
@@ -30,6 +30,13 @@ export function Tela4() {
   const [rotation, setRotation] = useState(0)
   const [transition, setTransition] = useState('none')
   const [erro, setErro] = useState<string | null>(null)
+  const [isTotem, setIsTotem] = useState(false)
+  useEffect(() => {
+    const check = () => setIsTotem(window.innerWidth >= 1080)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
 
   const handleGirar = async () => {
     if (!leadId || girando) return
@@ -101,7 +108,7 @@ export function Tela4() {
             draggable={false}
             style={{
               position: 'absolute',
-              top: -30,
+              top: isTotem ? -30 : -10,
               left: '50%',
               transform: 'translateX(-50%)',
               width: 'clamp(30px, 8vw, 100px)',
@@ -125,8 +132,9 @@ export function Tela4() {
               color: '#042d1e',
               border: 'none',
               borderRadius: '20px',
-              padding: 'clamp(10px, 2.5vh, 40px) clamp(24px, 8vw, 130px)',
-              fontSize: 'clamp(0.95rem, 3vh, 3rem)',
+              padding: isTotem ? 'clamp(10px, 2.5vh, 40px) clamp(24px, 8vw, 130px)' : '16px 28px',
+              fontSize: isTotem ? 'clamp(0.95rem, 3vh, 3rem)' : '1.2rem',
+              marginTop: isTotem ? 0 : '16px',
               letterSpacing: '0.04em',
             }}
           >

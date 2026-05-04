@@ -30,6 +30,8 @@ export function AutocompleteField({
   const [query, setQuery] = useState(value)
   const [open, setOpen] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
+  const pointerStartY = useRef(0)
+  const pointerScrolled = useRef(false)
 
   const filtered = open
     ? (query.length >= 1
@@ -111,9 +113,20 @@ export function AutocompleteField({
               key={city}
               onPointerDown={e => {
                 e.preventDefault()
-                onChange(city)
-                setQuery(city)
-                setOpen(false)
+                pointerStartY.current = e.clientY
+                pointerScrolled.current = false
+              }}
+              onPointerMove={e => {
+                if (Math.abs(e.clientY - pointerStartY.current) > 8) {
+                  pointerScrolled.current = true
+                }
+              }}
+              onPointerUp={() => {
+                if (!pointerScrolled.current) {
+                  onChange(city)
+                  setQuery(city)
+                  setOpen(false)
+                }
               }}
               style={{
                 padding: 'clamp(10px, 1.5vh, 20px) 20px',

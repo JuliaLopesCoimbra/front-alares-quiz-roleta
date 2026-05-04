@@ -105,8 +105,7 @@ export function SelectField({
           {options.map(opt => (
             <div
               key={opt.value}
-              onPointerDown={e => {
-                e.preventDefault()
+              onClick={() => {
                 onChange(opt.value)
                 setOpen(false)
               }}
