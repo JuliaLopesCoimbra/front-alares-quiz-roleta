@@ -23,21 +23,6 @@ const NUMPAD_ROWS = [
   ['7','8','9'],
 ]
 
-function kbStyle(position: 'top' | 'bottom'): React.CSSProperties {
-  return {
-    position: 'fixed',
-    ...(position === 'top'
-      ? { top: 0, borderBottom: '1px solid rgba(255,255,255,0.12)' }
-      : { bottom: 0, borderTop: '1px solid rgba(255,255,255,0.12)' }),
-    left: 0,
-    right: 0,
-    zIndex: 1000,
-    background: 'rgba(6, 14, 42, 0.98)',
-    padding: '12px 14px 18px',
-    backdropFilter: 'blur(12px)',
-  }
-}
-
 const rowStyle: React.CSSProperties = {
   display: 'flex',
   gap: '7px',
@@ -90,12 +75,23 @@ function Key({
   )
 }
 
-export function VirtualKeyboard({ position = 'bottom' }: { position?: 'top' | 'bottom' }) {
+export function VirtualKeyboard({ bottomOffset = 0 }: { bottomOffset?: number }) {
   const { mode, pressKey, closeKeyboard } = useKeyboard()
   const [caps, setCaps] = useState(false)
   const [view, setView] = useState<View>('letters')
 
-  const kb = kbStyle(position)
+  const kb: React.CSSProperties = {
+    position: 'fixed',
+    bottom: bottomOffset,
+    left: 0,
+    right: 0,
+    zIndex: 1000,
+    background: 'rgba(6, 14, 42, 0.98)',
+    borderTop: '1px solid rgba(255,255,255,0.12)',
+    padding: '12px 14px 18px',
+    backdropFilter: 'blur(12px)',
+  }
+
   const dim = 'rgba(255,255,255,0.08)'
   const red = 'rgba(220,60,60,0.3)'
   const green = '#00f6a5'

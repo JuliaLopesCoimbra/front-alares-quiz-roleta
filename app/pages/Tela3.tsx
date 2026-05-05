@@ -65,7 +65,6 @@ export function Tela3() {
   const [loading, setLoading] = useState(false)
   const [erro, setErro] = useState<string | null>(null)
   const [formReady, setFormReady] = useState(false)
-  const [layoutAlt, setLayoutAlt] = useState(false)
 
   useEffect(() => {
     setCidade('')
@@ -108,22 +107,22 @@ export function Tela3() {
 
   return (
     <>
-    {isTotem && <VirtualKeyboard position={layoutAlt ? 'top' : 'bottom'} />}
-    {isTotem && layoutAlt && (
+    {isTotem && <VirtualKeyboard bottomOffset={300} />}
+    {isTotem && (
       <div style={{
         position: 'fixed',
-        bottom: '80px',
+        bottom: 0,
         left: 0,
         right: 0,
-        zIndex: 1000,
-        height: '390px',
+        zIndex: 999,
+        height: '300px',
         display: 'flex',
-        alignItems: 'flex-start',
+        alignItems: 'center',
         justifyContent: 'center',
-        paddingTop: '10px',
+        paddingBottom: '48px',
         pointerEvents: 'none',
       }}>
-        <img src="/alares.png" alt="Alares" style={{ height: '460px', width: '100%', objectFit: 'contain' }} />
+        <img src="/alares.png" alt="Alares" style={{ height: '230px', objectFit: 'contain' }} />
       </div>
     )}
     <ScreenBackground src="/backgrounds/tela3.png">
@@ -131,10 +130,7 @@ export function Tela3() {
         onSubmit={handleSubmit}
         autoComplete="off"
         className="absolute inset-0 flex flex-col items-center pb-8 totem:pb-12"
-        style={{
-          paddingTop: isTotem ? (layoutAlt ? '400px' : '20vh') : '26vh',
-          paddingBottom: isTotem ? '390px' : '0',
-        }}
+        style={{ paddingTop: isTotem ? '6vh' : '26vh', paddingBottom: isTotem ? '700px' : '0' }}
       >
         {/* Wrapper centralizado com largura máxima */}
         <div className="w-full flex flex-col flex-1 overflow-hidden px-6" style={{ maxWidth: '860px' }}>
@@ -320,26 +316,6 @@ export function Tela3() {
             )
           })()}
 
-          {isTotem && (
-            <button
-              type="button"
-              onClick={() => setLayoutAlt(a => !a)}
-              style={{
-                alignSelf: 'center',
-                background: 'transparent',
-                border: '1px solid rgba(255,255,255,0.25)',
-                color: 'rgba(255,255,255,0.45)',
-                borderRadius: '8px',
-                padding: 'clamp(5px, 0.8vh, 10px) clamp(14px, 2vw, 28px)',
-                fontSize: 'clamp(0.65rem, 1.1vh, 0.85rem)',
-                cursor: 'pointer',
-                marginTop: '6px',
-                flexShrink: 0,
-              }}
-            >
-              {layoutAlt ? '⌨ teclado embaixo' : '⌨ teclado em cima'}
-            </button>
-          )}
         </div>
         </div>
       </form>
