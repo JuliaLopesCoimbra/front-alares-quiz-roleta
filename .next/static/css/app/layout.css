@@ -917,10 +917,6 @@ video {
 .text-\[1\.2rem\] {
   font-size: 1.2rem;
 }
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-}
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
@@ -1089,28 +1085,8 @@ body {
     font-size: 3.6rem;
   }
 
-  .totem\:text-\[clamp\(1\.4rem\2c 3vh\2c 2\.6rem\)\] {
-    font-size: clamp(1.4rem, 3vh, 2.6rem);
-  }
-
-  .totem\:text-\[clamp\(1\.8rem\2c 4vh\2c 3\.4rem\)\] {
-    font-size: clamp(1.8rem, 4vh, 3.4rem);
-  }
-
   .totem\:text-\[clamp\(2\.2rem\2c 5vh\2c 4\.2rem\)\] {
     font-size: clamp(2.2rem, 5vh, 4.2rem);
-  }
-
-  .totem\:text-\[clamp\(2rem\2c 5vh\2c 3\.6rem\)\] {
-    font-size: clamp(2rem, 5vh, 3.6rem);
-  }
-
-  .totem\:text-\[clamp\(3rem\2c 7vh\2c 6rem\)\] {
-    font-size: clamp(3rem, 7vh, 6rem);
-  }
-
-  .totem\:text-\[clamp\(2rem\2c 5vh\2c 2\.6rem\)\] {
-    font-size: clamp(2rem, 5vh, 2.6rem);
   }
 
   .totem\:text-\[clamp\(2rem\2c 5vh\2c 3\.3rem\)\] {

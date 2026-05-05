@@ -64,6 +64,8 @@ export function Tela3() {
   const [cidades, setCidades] = useState<Cidade[]>([])
   const [loading, setLoading] = useState(false)
   const [erro, setErro] = useState<string | null>(null)
+  const [formReady, setFormReady] = useState(false)
+  const [layoutAlt, setLayoutAlt] = useState(false)
 
   useEffect(() => {
     setCidade('')
@@ -106,13 +108,33 @@ export function Tela3() {
 
   return (
     <>
-    {isTotem && <VirtualKeyboard />}
+    {isTotem && <VirtualKeyboard position={layoutAlt ? 'top' : 'bottom'} />}
+    {isTotem && layoutAlt && (
+      <div style={{
+        position: 'fixed',
+        bottom: '80px',
+        left: 0,
+        right: 0,
+        zIndex: 1000,
+        height: '390px',
+        display: 'flex',
+        alignItems: 'flex-start',
+        justifyContent: 'center',
+        paddingTop: '10px',
+        pointerEvents: 'none',
+      }}>
+        <img src="/alares.png" alt="Alares" style={{ height: '460px', width: '100%', objectFit: 'contain' }} />
+      </div>
+    )}
     <ScreenBackground src="/backgrounds/tela3.png">
       <form
         onSubmit={handleSubmit}
         autoComplete="off"
         className="absolute inset-0 flex flex-col items-center pb-8 totem:pb-12"
-        style={{ paddingTop: isTotem ? '20vh' : '26vh', paddingBottom: isTotem ? '390px' : '0' }}
+        style={{
+          paddingTop: isTotem ? (layoutAlt ? '400px' : '20vh') : '26vh',
+          paddingBottom: isTotem ? '390px' : '0',
+        }}
       >
         {/* Wrapper centralizado com largura máxima */}
         <div className="w-full flex flex-col flex-1 overflow-hidden px-6" style={{ maxWidth: '860px' }}>
@@ -131,9 +153,12 @@ export function Tela3() {
               required
               value={nome}
               onChange={e => setNome(e.target.value)}
-              onFocus={() => nomeRef.current && openKeyboard(nomeRef.current, 'text')}
+              onFocus={() => { setFormReady(true); nomeRef.current && openKeyboard(nomeRef.current, 'text') }}
+              readOnly={!formReady}
               inputMode={isTotem ? 'none' : 'text'}
-              autoComplete="new-password"
+              autoComplete="off"
+              data-form-type="other"
+              data-lpignore="true"
               style={fieldStyle}
             />
           </div>
@@ -146,9 +171,12 @@ export function Tela3() {
               required
               value={empresa}
               onChange={e => setEmpresa(e.target.value)}
-              onFocus={() => empresaRef.current && openKeyboard(empresaRef.current, 'text')}
+              onFocus={() => { setFormReady(true); empresaRef.current && openKeyboard(empresaRef.current, 'text') }}
+              readOnly={!formReady}
               inputMode={isTotem ? 'none' : 'text'}
-              autoComplete="new-password"
+              autoComplete="off"
+              data-form-type="other"
+              data-lpignore="true"
               style={fieldStyle}
             />
           </div>
@@ -163,10 +191,13 @@ export function Tela3() {
                 required
                 value={whatsapp}
                 onChange={e => setWhatsapp(maskWhatsapp(e.target.value))}
-                onFocus={() => whatsappRef.current && openKeyboard(whatsappRef.current, 'numeric')}
+                onFocus={() => { setFormReady(true); whatsappRef.current && openKeyboard(whatsappRef.current, 'numeric') }}
+                readOnly={!formReady}
                 placeholder="(00) 00000-0000"
                 inputMode={isTotem ? 'none' : 'numeric'}
-                autoComplete="new-password"
+                autoComplete="off"
+                data-form-type="other"
+                data-lpignore="true"
                 style={fieldStyle}
               />
             </div>
@@ -241,9 +272,12 @@ export function Tela3() {
                 required
                 value={segmento}
                 onChange={e => setSegmento(e.target.value)}
-                onFocus={() => segmentoRef.current && openKeyboard(segmentoRef.current, 'text')}
+                onFocus={() => { setFormReady(true); segmentoRef.current && openKeyboard(segmentoRef.current, 'text') }}
+                readOnly={!formReady}
                 inputMode={isTotem ? 'none' : 'text'}
-                autoComplete="new-password"
+                autoComplete="off"
+                data-form-type="other"
+                data-lpignore="true"
                 style={fieldStyle}
               />
             </div>
@@ -285,6 +319,27 @@ export function Tela3() {
               </button>
             )
           })()}
+
+          {isTotem && (
+            <button
+              type="button"
+              onClick={() => setLayoutAlt(a => !a)}
+              style={{
+                alignSelf: 'center',
+                background: 'transparent',
+                border: '1px solid rgba(255,255,255,0.25)',
+                color: 'rgba(255,255,255,0.45)',
+                borderRadius: '8px',
+                padding: 'clamp(5px, 0.8vh, 10px) clamp(14px, 2vw, 28px)',
+                fontSize: 'clamp(0.65rem, 1.1vh, 0.85rem)',
+                cursor: 'pointer',
+                marginTop: '6px',
+                flexShrink: 0,
+              }}
+            >
+              {layoutAlt ? '⌨ teclado embaixo' : '⌨ teclado em cima'}
+            </button>
+          )}
         </div>
         </div>
       </form>

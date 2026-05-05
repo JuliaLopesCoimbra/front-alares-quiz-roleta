@@ -29,6 +29,7 @@ export function AutocompleteField({
 }: AutocompleteFieldProps) {
   const [query, setQuery] = useState(value)
   const [open, setOpen] = useState(false)
+  const [ready, setReady] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   const pointerStartY = useRef(0)
   const pointerScrolled = useRef(false)
@@ -72,10 +73,13 @@ export function AutocompleteField({
           onChange('')
           setOpen(true)
         }}
-        onFocus={e => { setOpen(true); onInputFocus?.(e.currentTarget) }}
+        onFocus={e => { setReady(true); setOpen(true); onInputFocus?.(e.currentTarget) }}
+        readOnly={!ready}
         disabled={disabled}
         placeholder={disabled ? '' : placeholder}
         autoComplete="off"
+        data-form-type="other"
+        data-lpignore="true"
         inputMode={inputMode}
         style={{
           width: '100%',
