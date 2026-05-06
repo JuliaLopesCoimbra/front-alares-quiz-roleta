@@ -6,9 +6,9 @@ import Link from 'next/link'
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api.quiz-roulette.picbrand.com.br'
 
 const DIAS = [
-  { num: 1, label: '04/05' },
-  { num: 2, label: '05/05' },
-  { num: 3, label: '06/05' },
+  { num: 1, label: '06/05' },
+  { num: 2, label: '07/05' },
+  { num: 3, label: '08/05' },
 ]
 
 interface BrindeContagem {

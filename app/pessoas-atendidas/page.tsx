@@ -18,7 +18,7 @@ interface PessoaAtendida {
   sorteado_em: string | null
 }
 
-const DIAS: Record<number, string> = { 1: '04/05', 2: '05/05', 3: '06/05' }
+const DIAS: Record<number, string> = { 1: '06/05', 2: '07/05', 3: '08/05' }
 const POR_PAGINA = 20
 
 function formatDateTime(iso: string | null) {
